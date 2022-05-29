@@ -40,11 +40,11 @@ void push_back(int value) {
     newnode->rlink = p;
 }
 
-void removenode(int value){
+void removenode(int value) {
     struct NODE* p;
     p = head->rlink;
-    while(p->rlink != tail){
-        if(p->data == value){
+    while (p->rlink != tail) {
+        if (p->data == value) {
             p->rlink->llink = p->llink;
             p->llink->rlink = p->rlink;
             free(p);
@@ -57,7 +57,7 @@ void removenode(int value){
 void print() {
     struct NODE *p;
     p = head;
-    while(p->rlink != tail){
+    while (p->rlink != tail) {
         printf("%d\n",p->data);
         p = p->rlink;
     }
