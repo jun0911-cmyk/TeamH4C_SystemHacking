@@ -66,7 +66,8 @@ print_line:
     mov rdi, end
     mov rax, 0
     call printf
-    leave ret
+    leave 
+    ret
 
 main:
 _start:
