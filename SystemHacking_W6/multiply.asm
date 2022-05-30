@@ -13,8 +13,8 @@ end: db 10, 0
 
 section .text
     extern printf
-    extren scanf
-    extren exit
+    extern scanf
+    extern exit
 
 multi:
     push rbp
@@ -27,7 +27,7 @@ multi:
 _loop:
     mov rcx, 9
     cmp rbx, rcx
-        jg +end
+        jg _end
     mov rax, rbx
     mov rdi, [buffer]
     mul rdi
@@ -43,18 +43,25 @@ _end:
     ret
 
 print_line:
-    push rbp,
+    push rbp
     mov rbp, rsp
     mov rsi, [buffer]
     mov rdi, fmt
+    mov rax, 0
+    call printf
+    mov rdi, mul
     mov rax, 0
     call printf
     mov rsi, [increase]
     mov rdi, fmt
     mov rax, 0
     call printf
+    mov rdi, equal
+    mov rax, 0
+    call printf
     mov rsi, [res]
-    mov rdi, 0
+    mov rdi, fmt
+    mov rax, 0
     call printf
     mov rdi, end
     mov rax, 0
